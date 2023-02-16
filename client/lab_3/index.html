@@ -1,5 +1,83 @@
-<!--
-    Replace this with your working code from Lab 2, and include:
-    - The styles in this folder's `style.css`
-    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>James Poindexter's Labs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header"><h1>James's Labs for INST377</h1></header>
+      <div class="container">
+        <div class="box left_section">
+          <h2>Album Names</h2>
+          <ol class="box">
+            <li>simple shapes - slenderbodies</li>
+            <li>Dance Without Me - DRAMA</li>
+            <li>
+              SHADOWBRINGERS: FINAL FANTASY XIV Original Soundtrack - Masayoshi
+              Soken
+            </li>
+            <li>Chrono Trigger Original Soundtrack - SQUARE ENIX MUSIC</li>
+            <li>Bad - Michael Jackson</li>
+          </ol>
+        </div>
+        <div class="box right_section">
+          <h2>Image Carousel</h2>
+          <div class="carousel">
+            <button class="prev">Prev</button>
+            <div class="slides">
+              <div class="carousel_item visible">
+                <img
+                  class=""
+                  src="images/game_image_1.jpg"
+                  alt="A still image of various video game characters including Mario, Kirby and PacMan"
+                />
+              </div>
+              <div class="carousel_item hidden">
+                <img
+                  src="images/game_image_2.jpg"
+                  alt="An image showing two people playing a video game with game controllers"
+                />
+              </div>
+              <div class="carousel_item hidden">
+                <img
+                  src="images/game_image_3.jpg"
+                  alt="an image of Mario Cart 8 with mario driving upside down"
+                />
+              </div>
+              <div class="carousel_item hidden">
+                <img
+                  src="images/game_image_4.jpg"
+                  alt="an image of a game controller, gaming mouse and keyboard"
+                />
+              </div>
+            </div>
+            <button class="next">next</button>
+          </div>
+          <div class="box">
+            <p>
+              Images are of Mochi, the <em>Internet is Hard</em> mascot for this
+              HTML and CSS tutorial.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <footer class="footer">
+        <p class="subtitle">
+          James's Github Account Page
+          <a
+            href="http://github.com/jlpjr1999/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >James Github Account</a
+          >
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
