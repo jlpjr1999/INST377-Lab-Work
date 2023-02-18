@@ -24,26 +24,24 @@ function updateSlidePosition() {
     slides.classList.add("hidden");
   });
 
+  console.log(slidePosition);
   slides[slidePosition].classList.add("visible");
 }
 
 function moveToNextSlide() {
-  /*
-    add an if statement here that checks
-    if you're already at the max number of slides
-    and if so, sets your slidePosition to the first index of an array
-    if not, set the slidePosition to the current position plus one
-  */
+  if(slidePosition === totalSlides-1){
+    slidePosition = 0;
+  }else{
+    slidePosition++;
+  }
   updateSlidePosition(); // this is how you call a function within a function
 }
 function moveToPrevSlide() {
-  // add your code in here for when you click the "prev" button
-  /*
-    add an if statement here that checks
-    if you're already at the first index position for an array
-    and if so, sets your slidePosition to the last slide position in totalSlides
-    if not, set the slidePosition to the current position minus one
-  */
+  if (slidePosition === 0){
+    slidePosition = totalSlides - 1;
+  }else{
+    slidePosition--;
+  }
   updateSlidePosition();
 }
 
