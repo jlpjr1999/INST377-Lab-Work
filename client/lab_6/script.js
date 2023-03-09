@@ -63,6 +63,7 @@ async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get_resto'); // get a reference to your submit button
+  const loadAnimation = document.querySelector('.lds-ellipsis'); // reference to loading animation
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
@@ -79,22 +80,27 @@ async function mainEvent() {
 
   // As a next step, log the first entry from your returned array of data.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-  console.log(`replace me with the first entry`);
+  console.log(arrayFromJson[0]);
 
   // Now write a log using string interpolation - log out the name and category of your first returned entry (index [0]) to the browser console
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
-  console.log(`replace me with the name and category of the first entry`);
+  console.log(`name: ${arrayFromJson[0]['name']}   category: ${arrayFromJson[0]['category']}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson?.length > 0) { // the question mark in this means "if this is set at all"
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
+
+    //hiding load button
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
       // Using .preventDefault, stop the page from refreshing when a submit event happens
       // https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+      submitEvent.preventDefault();
 
       // This constant will contain the value of your 15-restaurant collection when it processes
       const restaurantList = processRestaurants(arrayFromJson);
