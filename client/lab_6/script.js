@@ -18,6 +18,8 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log('fired injectHTML');
+  const target = document.querySelector('#restaurant_list');
+  target.innerHTML = "";
   /*
   ## JS and HTML Injection
     There are a bunch of methods to inject text or HTML into a document using JS
@@ -32,7 +34,15 @@ function injectHTML(list) {
     - using a .forEach method, inject a list element into your index.html for every element in the list
     - Display the name of that restaurant and what category of food it is
 */
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
 
+
+  list.forEach(item => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
 }
 
 function processRestaurants(list) {
@@ -57,9 +67,16 @@ function processRestaurants(list) {
     - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
   */
 
+    const numberExists = [];
+
     let range = [...Array(15).keys()];
     const newArray = range.map((item) =>{
-      const index = getRandomIntInclusive(0, list.length);
+      let index = getRandomIntInclusive(0, list.length);
+      while (numberExists.includes(index)) {
+        index = getRandomIntInclusive(0, list.length);
+        console.log('changing index');
+      }
+      numberExists.push(index);
       return list[index];
     })
     return newArray
