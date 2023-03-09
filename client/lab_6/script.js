@@ -10,6 +10,11 @@
     Under this comment place any utility functions you need - like an inclusive random number selector
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 function injectHTML(list) {
   console.log('fired injectHTML');
@@ -27,6 +32,7 @@ function injectHTML(list) {
     - using a .forEach method, inject a list element into your index.html for every element in the list
     - Display the name of that restaurant and what category of food it is
 */
+
 }
 
 function processRestaurants(list) {
@@ -50,6 +56,13 @@ function processRestaurants(list) {
     - Return only their name, category, and location
     - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
   */
+
+    let range = [...Array(15).keys()];
+    const newArray = range.map((item) =>{
+      const index = getRandomIntInclusive(0, list.length);
+      return list[index];
+    })
+    return newArray
 }
 
 async function mainEvent() {
@@ -76,7 +89,7 @@ async function mainEvent() {
   /*
     Below this comment, we log out a table of all the results:
   */
-  console.table(arrayFromJson);
+  // console.table(arrayFromJson);
 
   // As a next step, log the first entry from your returned array of data.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
@@ -104,6 +117,7 @@ async function mainEvent() {
 
       // This constant will contain the value of your 15-restaurant collection when it processes
       const restaurantList = processRestaurants(arrayFromJson);
+      console.log(restaurantList)
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(restaurantList);
