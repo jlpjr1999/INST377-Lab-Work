@@ -54,6 +54,9 @@ function cutRestaurantList(list) {
   return newArray = range.map((item) => {
     let index = getRandomIntInclusive(0, list.length - 1);
     while (numberExists.includes(index)) {
+      if (list.length == 0) {
+        break;
+    }
       index = getRandomIntInclusive(0, list.length);
       console.log('changing index');
     }
